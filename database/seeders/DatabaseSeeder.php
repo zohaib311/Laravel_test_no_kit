@@ -17,10 +17,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Employee::factory()->count(10)->create();
+        // Employee::factory()->count(10)->create();
 
-        // $this->call([
-        //     EmployeeSeeder::class,
-        // ]);
+        $this->call([
+            EmployeeSeeder::class,
+        ]);
     }
 }
