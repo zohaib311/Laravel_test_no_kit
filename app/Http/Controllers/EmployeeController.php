@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
@@ -19,25 +20,29 @@ class EmployeeController extends Controller
         dd($employee);
     }
 
-    public function AddEmployee()
+    public function AddEmployee(Request $req)
     {
-        $employee = DB::table('employees')
-            ->insertOrIgnore([
-                'name' => 'Zohaib aslam',
-                'email' => 'akram@gmail.com',
-                'phone' => '12345678910',
-                'address' => 'This is address line',
-                'city' => 'City name',
-                'country' => 'Country Name',
-                'position' => 'Employee Positon',
-            ]);
-        if ($employee) {
-            return view('welcome', ['employees' => $employees]);
+        $data = $req->validate([
+            'username'     => ['required', 'string', 'max:255'],
+            'useremail'    => ['required', 'email', 'max:255'],
+            'userphone'    => ['required', 'string', 'max:20'],
+            'useraddress'  => ['required', 'string', 'max:255'],
+            'usercity'     => ['required', 'string', 'max:255'],
+            'usercountry'  => ['required', 'string', 'max:255'],
+            'userposition' => ['required', 'string', 'max:255'],
+        ]);
 
-        } else {
-            echo '<h1> Email arleady Exsist</h1>';
-            dd($employee);
-        }
+        DB::table('employees')->insert([
+            'name'     => $data['username'],
+            'email'    => $data['useremail'],
+            'phone'    => $data['userphone'],
+            'address'  => $data['useraddress'],
+            'city'     => $data['usercity'],
+            'country'  => $data['usercountry'],
+            'position' => $data['userposition'],
+        ]);
+
+        return redirect()->route('employees.index');
     }
 
     public function UpdateEmployee()
@@ -51,7 +56,7 @@ class EmployeeController extends Controller
             echo '<h1>Employee Successfully Updated.</h1>';
             dd($employee);
 
-            return view('welcome', ['employees' => $employees]);
+            return view('welcome', ['employees' => $employee]);
         } else {
             echo '<h1> Error to Update</h1>';
             dd($employee);
@@ -66,10 +71,9 @@ class EmployeeController extends Controller
         if ($employee) {
             echo 'Employee Deleted successfully';
 
-            return view('welcome', ['employees' => $employees]);
+            return view('welcome', ['employees' => $employee]);
         } else {
             echo 'Error in Deletion';
         }
-
     }
 }
