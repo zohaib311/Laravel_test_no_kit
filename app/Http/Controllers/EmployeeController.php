@@ -32,8 +32,8 @@ class EmployeeController extends Controller
                 'position' => 'Employee Positon',
             ]);
         if ($employee) {
-            echo '<h1>Employee Successfully added.</h1>';
-            dd($employee);
+            return view('welcome', ['employees' => $employees]);
+
         } else {
             echo '<h1> Email arleady Exsist</h1>';
             dd($employee);
