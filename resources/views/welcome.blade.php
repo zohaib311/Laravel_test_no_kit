@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Employee Management</title>
     <style>
         body {
@@ -78,7 +80,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-flude">
         <h1>Employee Management System</h1>
         <p class="subtitle">A simple overview of all employees in your company.</p>
 
@@ -98,6 +100,7 @@
                             <th>City</th>
                             <th>Country</th>
                             <th>Position</th>
+                            <th>actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -110,6 +113,12 @@
                                 <td>{{ $employee->city }}</td>
                                 <td>{{ $employee->country }}</td>
                                 <td>{{ $employee->position }}</td>
+                                <td>
+                                    <a href="{{ route('employees.show', $employee->id) }}"
+                                        class="text-blue-500 btn btn-primary" href="">Edit</a>
+                                    <a href="{{ route('employees.delete', $employee->id) }}"
+                                        class="text-red-500 btn btn-danger" href="">Delete</a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -117,6 +126,9 @@
             @endif
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
