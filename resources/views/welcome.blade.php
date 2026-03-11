@@ -116,7 +116,9 @@
                                 <td>{{ $employee->position }}</td>
                                 <td>
                                     <a href="{{ route('employees.show', $employee->id) }}"
-                                        class="text-blue-500 btn btn-primary" href="">Edit</a>
+                                        class="text-blue-500 btn btn-primary" href="">View</a>
+                                    <a href="{{ route('employees.page', $employee->id) }}"
+                                        class="text-blue-500 btn btn-warning" href="">Update</a>
                                     <a href="{{ route('employees.delete', $employee->id) }}"
                                         class="text-red-500 btn btn-danger" href="">Delete</a>
                                 </td>
