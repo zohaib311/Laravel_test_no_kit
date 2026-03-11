@@ -9,7 +9,7 @@ class EmployeeController extends Controller
 {
     public function ShowEmployees()
     {
-        $employees = DB::table('employees')->get();
+        $employees = DB::table('employees')->orderBy('id')->cursorPaginate(5);
 
         return view('welcome', ['employees' => $employees]);
     }

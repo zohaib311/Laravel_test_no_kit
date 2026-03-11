@@ -54,7 +54,7 @@
             padding: 0.75rem 0.85rem;
             text-align: left;
             font-size: 0.9rem;
-            white-space: nowrap;
+            white-space: wrap;
         }
 
         th {
@@ -76,6 +76,10 @@
             color: #9ca3af;
             font-style: italic;
         }
+
+        a {
+            margin: 3px;
+        }
     </style>
 </head>
 
@@ -94,6 +98,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
@@ -107,6 +112,7 @@
                     <tbody>
                         @foreach ($employees as $employee)
                             <tr>
+                                <td>{{ $employee->id }}</td>
                                 <td>{{ $employee->name }}</td>
                                 <td>{{ $employee->email }}</td>
                                 <td>{{ $employee->phone }}</td>
@@ -127,6 +133,9 @@
                     </tbody>
                 </table>
             @endif
+        </div>
+        <div class="mt-5 d-flex justify-content-center">
+            {{ $employees->links() }}
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
