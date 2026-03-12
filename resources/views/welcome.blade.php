@@ -87,7 +87,7 @@
     <div class="container-flude">
         <h1>Employee Management System</h1>
         <p class="subtitle">A simple overview of all employees in your company.</p>
-        <a class="btn btn primary" href="/openform">Add new Employee</a>
+        <a class=" m-4 btn btn-primary" href="/openform">Add new Employee</a>
 
         <div class="card">
             @if ($employees->isEmpty())

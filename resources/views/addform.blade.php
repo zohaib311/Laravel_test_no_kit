@@ -17,32 +17,80 @@
             @csrf
             <div class="form-group">
                 <label for="exampleInputPassword1">Name</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" name="username">
+                <input type="text" value="{{ old('username') }}"
+                    class="form-control @error('username') is-invalid @enderror" id="exampleInputPassword1"
+                    name="username">
+                <span class="text-danger">
+                    @error('username')
+                        {{ $message }}
+                    @enderror
+                </span>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    name="useremail">
+                <input type="email" value="{{ old('useremail') }}"
+                    class="form-control @error('useremail') is-invalid @enderror " id="exampleInputEmail1"
+                    aria-describedby="emailHelp" name="useremail">
+                <span class="text-danger">
+                    @error('useremail')
+                        {{ $message }}
+                    @enderror
+                </span>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Phone</label>
-                <input type="number" class="form-control" id="exampleInputPassword1" name="userphone">
+                <label>Phone</label>
+                <input type="number" value="{{ old('userphone') }}"
+                    class="form-control @error('userphone') is-invalid @enderror" id="exampleInputPassword1"
+                    name="userphone">
+                <span class="text-danger">
+                    @error('userphone')
+                        {{ $message }}
+                    @enderror
+                </span>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Address</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" name="useraddress">
+                <label>Address</label>
+                <input type="text" value="{{ old('useraddress') }}"
+                    class="form-control @error('useraddress') is-invalid @enderror" id="exampleInputPassword1"
+                    name="useraddress">
+                <span class="text-danger">
+                    @error('useraddress')
+                        {{ $message }}
+                    @enderror
+                </span>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">City</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" name="usercity">
+                <label>City</label>
+                <input type="text" value="{{ old('usercity') }}"
+                    class="form-control @error('usercity') is-invalid @enderror" id="exampleInputPassword1"
+                    name="usercity">
+                <span class="text-danger">
+                    @error('usercity')
+                        {{ $message }}
+                    @enderror
+                </span>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Country</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" name="usercountry">
+                <label>Country</label>
+                <input type="text" value="{{ old('usercountry') }}"
+                    class="form-control @error('usercountry') is-invalid @enderror" id="exampleInputPassword1"
+                    name="usercountry">
+                <span class="text-danger">
+                    @error('usercountry')
+                        {{ $message }}
+                    @enderror
+                </span>
             </div>
             <div class="form-group">
-                <label for="exampleInputPassword1">Position</label>
-                <input type="text" class="form-control" id="exampleInputPassword1" name="userposition">
+                <label>Position</label>
+                <input type="text" value="{{ old('userposition') }}"
+                    class="form-control @error('userposition') is-invalid @enderror" id="exampleInputPassword1"
+                    name="userposition">
+                <span class="text-danger">
+                    @error('userposition')
+                        {{ $message }}
+                    @enderror
+                </span>
             </div>
 
             <button type="submit" class="mt-4 btn btn-primary">Submit</button>

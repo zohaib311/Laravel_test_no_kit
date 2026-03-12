@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,17 +27,8 @@ class EmployeeController extends Controller
         dd($employee);
     }
 
-    public function AddEmployee(Request $req)
+    public function AddEmployee(UserRequest $req)
     {
-        // $data = $req->validate([
-        //     'username'     => ['required', 'string', 'max:255'],
-        //     'useremail'    => ['required', 'email', 'max:255'],
-        //     'userphone'    => ['required', 'string', 'max:20'],
-        //     'useraddress'  => ['required', 'string', 'max:255'],
-        //     'usercity'     => ['required', 'string', 'max:255'],
-        //     'usercountry'  => ['required', 'string', 'max:255'],
-        //     'userposition' => ['required', 'string', 'max:255'],
-        // ]);
 
         DB::table('employees')->insert([
             'name'     => $req['username'],
@@ -48,6 +40,7 @@ class EmployeeController extends Controller
             'position' => $req['userposition'],
         ]);
 
+        // return $req;
         return redirect()->route('employees.index');
     }
 
@@ -57,11 +50,11 @@ class EmployeeController extends Controller
         $employee = DB::table('employees')
             ->find($id);
         // return $employee;
-        return view('updateform', ['data' => $employee]);
+        return view('updateform', ['req' => $employee]);
     }
 
 
-    public function UpdateEmployee(Request $req, $id)
+    public function UpdateEmployee(UserRequest $req, $id)
     {
         $employee = DB::table('employees')
             ->where('id', $id)
