@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('country');
             $table->string('position');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

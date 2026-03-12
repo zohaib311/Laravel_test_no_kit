@@ -9,8 +9,13 @@ class EmployeeController extends Controller
 {
     public function ShowEmployees()
     {
-        $employees = DB::table('employees')->paginate(5, pageName: 'p');
+        $employees = DB::table('employees as e')
+            ->Join('cities as c', 'e.city', '=', 'c.id')
+            ->select('e.*', DB::raw('c.city_name as city_name'))
+            // ->get()
+            ->paginate(5, pageName: 'p');
 
+        // return $employees;
         return view('welcome', ['employees' => $employees]);
     }
 
@@ -91,4 +96,12 @@ class EmployeeController extends Controller
             echo 'Error in Deletion';
         }
     }
+
+    // Join Use 
+
+    //  public function JoinEmployee(){
+    //     $employee = DB::table('employees')
+    //     ->join('')
+    //  }
+
 }

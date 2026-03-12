@@ -117,7 +117,7 @@
                                 <td>{{ $employee->email }}</td>
                                 <td>{{ $employee->phone }}</td>
                                 <td>{{ $employee->address }}</td>
-                                <td>{{ $employee->city }}</td>
+                                <td>{{ $employee->city_name ?? $employee->city }}</td>
                                 <td>{{ $employee->country }}</td>
                                 <td>{{ $employee->position }}</td>
                                 <td>
