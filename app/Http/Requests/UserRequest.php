@@ -70,5 +70,8 @@ class UserRequest extends FormRequest
         ];
     }
 
+    /**
+     * Only show message to first Failure.
+     */
     protected $stopOnFirstFailure = true;
 }

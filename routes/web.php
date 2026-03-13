@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ChildResourceController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ResourceController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(EmployeeController::class)->group(function () {
@@ -16,3 +18,18 @@ Route::controller(EmployeeController::class)->group(function () {
 Route::get('/openform', function () {
     return view('addform');
 });
+
+
+
+/**
+ * Resource Controller All Routes
+ */
+Route::resource('resource', ResourceController::class)
+    ->only(['index', 'create'])
+    ->names(['create' => 'resource.build']);
+
+
+/**
+ * Child Resource Controller All Routes
+ */
+Route::resource('resource.childresource', ChildResourceController::class)->shallow();
