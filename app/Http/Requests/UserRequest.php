@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
 
             'username'     => ['required', 'string', 'max:255'],
             'useremail'    => ['required', 'email', 'max:255'],
-            'userphone'    => ['required', 'nemeric', 'max:14'],
+            'userphone'    => ['required', 'digits_between:1,14'],
             'useraddress'  => ['required', 'string', 'max:255'],
             'usercity'     => ['required', 'string', 'max:255'],
             'usercountry'  => ['required', 'string', 'max:255'],

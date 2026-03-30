@@ -16,10 +16,9 @@
         <form action="{{ route('employees.add') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="exampleInputPassword1">Name</label>
+                <label f>Name</label>
                 <input type="text" value="{{ old('username') }}"
-                    class="form-control @error('username') is-invalid @enderror" id="exampleInputPassword1"
-                    name="username">
+                    class="form-control @error('username') is-invalid @enderror" name="username">
                 <span class="text-danger">
                     @error('username')
                         {{ $message }}
@@ -40,8 +39,7 @@
             <div class="form-group">
                 <label>Phone</label>
                 <input type="number" value="{{ old('userphone') }}"
-                    class="form-control @error('userphone') is-invalid @enderror" id="exampleInputPassword1"
-                    name="userphone">
+                    class="form-control @error('userphone') is-invalid @enderror" name="userphone">
                 <span class="text-danger">
                     @error('userphone')
                         {{ $message }}
@@ -51,8 +49,7 @@
             <div class="form-group">
                 <label>Address</label>
                 <input type="text" value="{{ old('useraddress') }}"
-                    class="form-control @error('useraddress') is-invalid @enderror" id="exampleInputPassword1"
-                    name="useraddress">
+                    class="form-control @error('useraddress') is-invalid @enderror" name="useraddress">
                 <span class="text-danger">
                     @error('useraddress')
                         {{ $message }}
@@ -62,8 +59,7 @@
             <div class="form-group">
                 <label>City</label>
                 <input type="text" value="{{ old('usercity') }}"
-                    class="form-control @error('usercity') is-invalid @enderror" id="exampleInputPassword1"
-                    name="usercity">
+                    class="form-control @error('usercity') is-invalid @enderror" name="usercity">
                 <span class="text-danger">
                     @error('usercity')
                         {{ $message }}
@@ -73,8 +69,7 @@
             <div class="form-group">
                 <label>Country</label>
                 <input type="text" value="{{ old('usercountry') }}"
-                    class="form-control @error('usercountry') is-invalid @enderror" id="exampleInputPassword1"
-                    name="usercountry">
+                    class="form-control @error('usercountry') is-invalid @enderror" name="usercountry">
                 <span class="text-danger">
                     @error('usercountry')
                         {{ $message }}
@@ -84,8 +79,7 @@
             <div class="form-group">
                 <label>Position</label>
                 <input type="text" value="{{ old('userposition') }}"
-                    class="form-control @error('userposition') is-invalid @enderror" id="exampleInputPassword1"
-                    name="userposition">
+                    class="form-control @error('userposition') is-invalid @enderror" name="userposition">
                 <span class="text-danger">
                     @error('userposition')
                         {{ $message }}

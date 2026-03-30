@@ -3,91 +3,68 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Employee;
 
 class EmployeeController extends Controller
 {
+    private function employeePayload(UserRequest $req): array
+    {
+        return [
+            'name' => $req->input('username'),
+            'email' => $req->input('useremail'),
+            'phone' => $req->input('userphone'),
+            'address' => $req->input('useraddress'),
+            'city' => $req->input('usercity'),
+            'country' => $req->input('usercountry'),
+            'position' => $req->input('userposition'),
+        ];
+    }
+
     public function ShowEmployees()
     {
-        $employees = DB::table('employees as e')
-            ->Join('cities as c', 'e.city', '=', 'c.id')
-            ->select('e.*', DB::raw('c.city_name as city_name'))
-            // ->get()
+        $employees = Employee::query()
+            ->leftJoin('cities as c', 'employees.city', '=', 'c.id')
+            ->select('employees.*', 'c.city_name')
             ->paginate(5, pageName: 'p');
 
-        // return $employees;
         return view('welcome', ['employees' => $employees]);
     }
 
     // Show Single Employee
     public function ShowEmployee($id)
     {
-        $employee = DB::table('employees')->where('id', $id)->first();
+        $employee = Employee::findOrFail($id);
         dd($employee);
     }
 
     public function AddEmployee(UserRequest $req)
     {
-
-        DB::table('employees')->insert([
-            'name'     => $req['username'],
-            'email'    => $req['useremail'],
-            'phone'    => $req['userphone'],
-            'address'  => $req['useraddress'],
-            'city'     => $req['usercity'],
-            'country'  => $req['usercountry'],
-            'position' => $req['userposition'],
-        ]);
-
-        // return $req;
+        Employee::create($this->employeePayload($req));
         return redirect()->route('employees.index');
     }
 
 
     public function UpdatePage($id)
     {
-        $employee = DB::table('employees')
-            ->find($id);
-        // return $employee;
-        return view('updateform', ['req' => $employee]);
+        $employee = Employee::findOrFail($id);
+        return view('updateform', ['data' => $employee]);
     }
 
 
     public function UpdateEmployee(UserRequest $req, $id)
     {
-        $employee = DB::table('employees')
-            ->where('id', $id)
-            ->update([
-                'name'     => $req['username'],
-                'email'    => $req['useremail'],
-                'phone'    => $req['userphone'],
-                'address'  => $req['useraddress'],
-                'city'     => $req['usercity'],
-                'country'  => $req['usercountry'],
-                'position' => $req['userposition'],
-            ]);
+        $employee = Employee::findOrFail($id);
+        $employee->update($this->employeePayload($req));
 
-        if ($employee) {
-            return redirect()->route('employees.index');
-        } else {
-            echo '<h1> Error to Update</h1>';
-            dd($employee);
-        }
+        return redirect()->route('employees.index');
     }
 
     public function DeleteEmployee($id)
     {
-        $employee = DB::table('employees')
-            ->where('id', $id)
-            ->delete();
-        if ($employee) {
-            echo 'Employee Deleted successfully';
+        $employee = Employee::findOrFail($id);
+        $employee->delete();
 
-            return view('welcome', ['employees' => $employee]);
-        } else {
-            echo 'Error in Deletion';
-        }
+        return redirect()->route('employees.index');
     }
 
     // Join Use 
