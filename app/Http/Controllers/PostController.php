@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -12,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $post = Post::findOrFail(1);
+        return $post;
     }
 
     /**
@@ -20,7 +22,13 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $post_title = "This is Testing Title";
+
+        Post::create([
+            "title" => $post_title,
+            "description" => "lorem ipsom",
+            "employee_id" => "4",
+        ]);
     }
 
     /**

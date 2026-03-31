@@ -15,13 +15,6 @@ class Employee extends Model
         return $this->hasMany(Post::class);
     }
 
-    protected static function booted(): void
-    {
-        static::deleted(function ($employee) {
-            $employee->post()->delete();
-        });
-    }
-
 
     public $timestamps = false;
 

@@ -3,7 +3,7 @@
         "title": "Senior Web Developer",
         "slug": "senior-web-developer",
         "description": "Lead developer responsible for building and maintaining web applications using Laravel and Vue.js",
-        "counter": "145",
+        "counter": "0",
         "employee_id": "1"
     },
     {
@@ -17,7 +17,7 @@
         "title": "Backend Engineer",
         "slug": "backend-engineer",
         "description": "Designs and implements scalable APIs, database optimizations, and server-side logic using Python and Django.",
-        "counter": "234",
+        "counter": "200",
         "employee_id": "1"
     },
     {
@@ -60,13 +60,13 @@
         "slug": "mobile-app-developer",
         "description": "Builds native and cross-platform mobile applications for iOS and Android using React Native and Flutter.",
         "counter": "97",
-        "employee_id": "1"
+        "employee_id": "5"
     },
     {
         "title": "Security Analyst",
         "slug": "security-analyst",
         "description": "Monitors systems for security threats, performs vulnerability assessments, and implements security best practices.",
         "counter": "34",
-        "employee_id": "1"
+        "employee_id": "4"
     }
 ]
