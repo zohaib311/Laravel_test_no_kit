@@ -1,0 +1,72 @@
+[
+    {
+        "title": "Senior Web Developer",
+        "slug": "senior-web-developer",
+        "description": "Lead developer responsible for building and maintaining web applications using Laravel and Vue.js",
+        "counter": "145",
+        "employee_id": "1"
+    },
+    {
+        "title": "Frontend Specialist",
+        "slug": "frontend-specialist",
+        "description": "Expert in React, TypeScript, and modern CSS frameworks. Creates responsive and accessible user interfaces.",
+        "counter": "89",
+        "employee_id": "2"
+    },
+    {
+        "title": "Backend Engineer",
+        "slug": "backend-engineer",
+        "description": "Designs and implements scalable APIs, database optimizations, and server-side logic using Python and Django.",
+        "counter": "234",
+        "employee_id": "1"
+    },
+    {
+        "title": "DevOps Specialist",
+        "slug": "devops-specialist",
+        "description": "Manages cloud infrastructure, CI/CD pipelines, and container orchestration with Kubernetes and AWS.",
+        "counter": "67",
+        "employee_id": "2"
+    },
+    {
+        "title": "Data Scientist",
+        "slug": "data-scientist",
+        "description": "Analyzes complex datasets, builds machine learning models, and creates data visualizations to drive business decisions.",
+        "counter": "312",
+        "employee_id": "1"
+    },
+    {
+        "title": "UI/UX Designer",
+        "slug": "ui-ux-designer",
+        "description": "Creates intuitive user experiences and visually appealing interfaces using Figma and Adobe Creative Suite.",
+        "counter": "56",
+        "employee_id": "3"
+    },
+    {
+        "title": "Project Manager",
+        "slug": "project-manager",
+        "description": "Coordinates cross-functional teams, manages timelines, and ensures successful delivery of software projects.",
+        "counter": "178",
+        "employee_id": "2"
+    },
+    {
+        "title": "Quality Assurance Engineer",
+        "slug": "quality-assurance-engineer",
+        "description": "Develops automated test suites, performs manual testing, and ensures software quality standards are met.",
+        "counter": "203",
+        "employee_id": "2"
+    },
+    {
+        "title": "Mobile App Developer",
+        "slug": "mobile-app-developer",
+        "description": "Builds native and cross-platform mobile applications for iOS and Android using React Native and Flutter.",
+        "counter": "97",
+        "employee_id": "1"
+    },
+    {
+        "title": "Security Analyst",
+        "slug": "security-analyst",
+        "description": "Monitors systems for security threats, performs vulnerability assessments, and implements security best practices.",
+        "counter": "34",
+        "employee_id": "1"
+    }
+]

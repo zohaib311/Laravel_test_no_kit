@@ -9,6 +9,20 @@ class Employee extends Model
 {
     use HasFactory;
 
+
+    public function post()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    protected static function booted(): void
+    {
+        static::deleted(function ($employee) {
+            $employee->post()->delete();
+        });
+    }
+
+
     public $timestamps = false;
 
     protected $fillable = [

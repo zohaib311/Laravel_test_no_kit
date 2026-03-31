@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Employee;
+use App\Models\Post;
 use App\Models\Citie;
 
 class EmployeeSeeder extends Seeder
@@ -32,6 +33,23 @@ class EmployeeSeeder extends Seeder
             ]);
         }
 
+
+        $json = file_get_contents(base_path("database/json/posts.json"));
+        $data = json_decode($json, true);
+
+        // $data = json_decode(file_get_contents(database_path('database/json/posts.json')), true);
+
+        foreach ($data as $item) {
+            Post::create([
+                'title' => $item['title'],
+                'slug' => $item['slug'],
+                'description' => $item['description'],
+                'counter' => $item['counter'],
+                'employee_id' => $item['employee_id'],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
 
         // Seeder for Cities 
 

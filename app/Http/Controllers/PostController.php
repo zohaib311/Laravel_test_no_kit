@@ -3,18 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Employee;
 use Illuminate\Http\Request;
 
-class EmployeeController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $employee = Employee::with('post')->find(3);
-        return $employee;
+        //
     }
 
     /**
@@ -22,7 +20,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        Employee::destroy(3);
+        //
     }
 
     /**
@@ -60,5 +58,8 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id) {}
+    public function destroy(string $id)
+    {
+        //
+    }
 }

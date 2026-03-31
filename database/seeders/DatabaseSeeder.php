@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use App\Models\User;
 use App\Models\Employee;
 use Database\Factories\EmployeeFactory;
+use Database\Seeders\EmployeeSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
