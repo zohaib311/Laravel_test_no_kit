@@ -2,66 +2,78 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Models\Employee;
-use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    private function employeePayload(UserRequest $req): array
     {
-        $employee = Employee::with('post')->find(3);
-        return $employee;
+        return [
+            'name' => $req->input('username'),
+            'email' => $req->input('useremail'),
+            'phone' => $req->input('userphone'),
+            'address' => $req->input('useraddress'),
+            'city' => $req->input('usercity'),
+            'country' => $req->input('usercountry'),
+            'position' => $req->input('userposition'),
+        ];
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function ShowEmployees()
     {
-        Employee::destroy(3);
+        $employees = Employee::query()
+            ->leftJoin('cities as c', 'employees.city', '=', 'c.id')
+            ->select(['employees.*', 'c.city_name'])
+            ->paginate(5, pageName: 'p');
+
+        return view('welcome', ['employees' => $employees]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    // Show Single Employee
+    public function ShowEmployee($id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+        dd($employee);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function AddEmployee(UserRequest $req)
     {
-        //
+        $employee = Employee::create($this->employeePayload($req));
+
+        // dd($employee);
+        return redirect()->route('employees.index');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+
+    public function UpdatePage($id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+        return view('updateform', ['data' => $employee]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+
+    public function UpdateEmployee(UserRequest $req, $id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+        $employee->update($this->employeePayload($req));
+
+        return redirect()->route('employees.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function DeleteEmployee($id)
     {
-        //
+        $employee = Employee::findOrFail($id);
+        $employee->delete();
+
+        return redirect()->route('employees.index');
     }
+
+    // Join Use 
+
+    //  public function JoinEmployee(){
+    //     $employee = DB::table('employees')
+    //     ->join('')
+    //  }
+
 }
