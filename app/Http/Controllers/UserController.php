@@ -16,7 +16,7 @@ class UserController extends Controller
             "email" => 'required|email',
             "password" => 'required|confirmed',
         ]);
-        // dd($data);
+
         $user = User::create($data);
 
         if ($user) {
@@ -38,13 +38,7 @@ class UserController extends Controller
 
     public function formPage(Request $request)
     {
-
-
-        if (Auth::check()) {
-            return view('addform');
-        } else {
-            return redirect()->route('loginPage');
-        }
+        return view('addform');
     }
 
     public function logout()

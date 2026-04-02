@@ -88,8 +88,9 @@
         <h1>Employee Management System</h1>
         <p class="subtitle">A simple overview of all employees in your company.</p>
         <a class=" m-4 btn btn-primary" href={{ route('openForm') }}>Add new Employee</a>
-        <a class=" m-4 btn btn-info" href="/register">Register</a>
-        <a class=" m-4 btn btn-warning" href={{ route('loginPage') }}>Login</a>
+        {{-- <a class=" m-4 btn btn-info" href="/register">Register</a> --}}
+        {{-- <a class=" m-4 btn btn-warning" href={{ route('loginPage') }}>Login</a> --}}
+        <a class=" m-4 btn btn-danger" href={{ route('logout') }}>Logout</a>
 
         <div class="card">
             @if ($employees->isEmpty())

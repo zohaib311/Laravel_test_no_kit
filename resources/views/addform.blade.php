@@ -14,6 +14,7 @@
     <div class="container w-50 mt-5">
         <h1>Add New User</h1>
         <a href={{ route('logout') }} type="submit" class="mb-4 btn btn-primary">Logout</a>
+        <a href={{ route('employees.index') }} type="submit" class="mb-4 btn btn-info">Home</a>
 
         <form action="{{ route('employees.add') }}" method="POST">
             @csrf
