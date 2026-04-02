@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,10 +12,8 @@ Route::get('/', function () {
 
 
 Route::controller(EmployeeController::class)->group(function () {
-    // These should be accessible to both admin AND employee
     Route::get('/employess', 'showEmployees')->name('employees.index'); // Accept multiple roles
     // Route::get('/employess', 'showEmployees')->name('employees.index')->middleware('isAuthenticated:employee, admin'); // Accept multiple roles
-
     Route::get('/show/{id}', 'showEmployee')->name('employees.show');
 
     // These should be admin only
@@ -31,6 +30,13 @@ Route::controller(UserController::class)->group(function () {
     Route::post('registerSave', 'register')->name('registerSave');
     Route::post('loginCheck',  'login')->name('loginCheck');
     Route::get('logout',  'logout')->name('logout');
+});
+
+Route::controller(SessionController::class)->group(function () {
+
+    Route::get('session', 'index')->name('sessionIndex');
+    Route::get('session/store', 'store')->name('sessionStore');
+    Route::get('session/delete',  'delete')->name('SessionDelete');
 });
 
 
