@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(EmployeeController::class)->group(function () {
@@ -12,7 +13,21 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::get('/updatepage/{id}', 'UpdatePage')->name('employees.page');
     Route::get('/delete/{id}',  'DeleteEmployee')->name('employees.delete');
 });
-// Route::view('/openform', 'add');
-Route::get('/openform', function () {
-    return view('addform');
+
+
+
+Route::get('openform', [UserController::class, 'formPage'])->name('openForm');
+
+Route::get('/register', function () {
+    return view('admin.register');
 });
+Route::post('registerSave', [UserController::class, 'register'])->name('registerSave');
+
+
+Route::get('/login', function () {
+    return view('admin.login');
+})->name("loginPage");
+
+Route::post('loginCheck', [UserController::class, 'login'])->name('loginCheck');
+
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
