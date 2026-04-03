@@ -32,7 +32,7 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt($data)) {
-            return redirect()->route('openForm');
+            return redirect()->route('employees.admin');
         }
     }
 

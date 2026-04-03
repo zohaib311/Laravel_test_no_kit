@@ -30,6 +30,16 @@ class EmployeeController extends Controller
         return view('welcome', ['employees' => $employees]);
     }
 
+    public function AdminEmployees()
+    {
+        $employees = Employee::query()
+            ->leftJoin('cities as c', 'employees.city', '=', 'c.id')
+            ->select(['employees.*', 'c.city_name'])
+            ->paginate(5, pageName: 'p');
+
+        return view('admin-employes', ['employees' => $employees]);
+    }
+
     // Show Single Employee
     public function ShowEmployee($id)
     {

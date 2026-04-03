@@ -13,6 +13,8 @@
 <body>
     <div class="container w-50 mt-5">
         <h1>Add New User</h1>
+        <a href={{ route('employees.admin') }} type="submit" class="mb-4 btn btn-info">Back</a>
+
         <form action="{{ route('employees.update', $data->id) }}" method="POST">
             @csrf
             <div class="form-group">
