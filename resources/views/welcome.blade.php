@@ -87,6 +87,10 @@
     <div class="container-flude">
         <h1>Employee Management System</h1>
         <p class="subtitle">A simple overview of all employees in your company.</p>
+        <p class="mt-4">I am using Gate here to hide, Add new Employee And Actions too if role is not Admin</p>
+        @can('isAdmin')
+            <a class=" m-4 btn btn-primary" href={{ route('openForm') }}>Add new Employee</a>
+        @endcan
         <a class=" m-4 btn btn-danger" href={{ route('logout') }}>Logout</a>
 
         <div class="card">
@@ -106,6 +110,7 @@
                             <th>City</th>
                             <th>Country</th>
                             <th>Position</th>
+                            <th>actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -119,7 +124,18 @@
                                 <td>{{ $employee->city_name ?? $employee->city }}</td>
                                 <td>{{ $employee->country }}</td>
                                 <td>{{ $employee->position }}</td>
-
+                                @can('isAdmin')
+                                    <td>
+                                        <a href="{{ route('employees.show', $employee->id) }}"
+                                            class="text-blue-500 btn btn-primary" href="">View</a>
+                                        <a href="{{ route('employees.page', $employee->id) }}"
+                                            class="text-blue-500 btn btn-warning" href="">Update</a>
+                                        <a href="{{ route('employees.delete', $employee->id) }}"
+                                            class="text-red-500 btn btn-danger" href="">Delete</a>
+                                    </td>
+                                    {{-- @else
+                                    <h1>Restricted due to Unauthorized</h1> --}}
+                                @endcan
                             </tr>
                         @endforeach
                     </tbody>
